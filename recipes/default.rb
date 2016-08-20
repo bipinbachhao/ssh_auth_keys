@@ -37,17 +37,17 @@ ruby_block 'ssh_auth_keys_copying' do
             if node['encrypted_data_bag']
               data = Chef::EncryptedDataBagItem.load('users', bag_user)
             else
-              data_bag_item('users', bag_user)
+              data = data_bag_item('users', bag_user)
             end
 
-            if data && data['ssh_auth_key']
-              ssh_keys += Array(data['ssh_auth_key'])
-              ssh_keys += Array(data['ssh_auth_key']).map { |x| (data['ssh_options'] ? data['ssh_options']+' '+x : x) }
+            if data && data['ssh_keys']
+              ssh_keys += Array(data['ssh_keys'])
+              ssh_keys += Array(data['ssh_keys']).map { |x| (data['ssh_options'] ? data['ssh_options']+' '+x : x) }
             end
           end
 
           # Saving SSH keys
-          if ssh_keys.length !empty?
+          if ssh_keys.length > 0
             home_dir = user['dir']
 
             if node['skip_if_missing_home'] && !File.exist?(home_dir)
