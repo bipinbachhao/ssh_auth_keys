@@ -125,4 +125,6 @@ knife data bag users bipin
 
 ## License and Authors
 
-Authors: TODO: List authors
+TODO:
+- Work on FC014: Consider extracting long ruby_block to library
+- convert recipe to a Resource
