@@ -1,0 +1,6 @@
+---
+hostname: 127.0.0.1
+port: '2200'
+username: vagrant
+ssh_key: C:/Users/Bipin/Documents/GitHub/Dev_Projects/chef-repo/cookbooks/.kitchen/kitchen-vagrant/kitchen-cookbooks-default-ubuntu-1404/.vagrant/machines/default/virtualbox/private_key
+last_action: create
