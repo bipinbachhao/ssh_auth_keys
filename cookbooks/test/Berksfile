@@ -1,0 +1,4 @@
+source "https://supermarket.chef.io"
+
+metadata
+cookbook 'ssh_auth_keys', path: '../ssh_auth_keys'
