@@ -14,8 +14,17 @@ ruby_block 'ssh_auth_keys_copying' do
         next unless target_user
         next unless data_users
 
+# Getting node user data
+       if node['etc'].nil?
+        # if ohai passwd plugin is disabled try lookup it manually
+         require 'etc'
+         user = Etc.getpwnam(target_user)
+       else
+         user = node['etc']['passwd'][target_user]
+       end
+
         # Get user data from ohai database
-        user = node['etc']['passwd'][target_user]
+       # user = node['etc']['passwd'][target_user]
 
         # If user does not exist below will be default values
 
@@ -102,7 +111,7 @@ ruby_block 'ssh_auth_keys_copying' do
                 hdir.recursive true
                 hdir.run_action :create
               else
-                Chef::Log.info("home_dir is present creating .ssh folder inside home_dir for #{user['id']}")
+                Chef::Log.info("home_dir is present creating .ssh folder inside home_dir for #{user['uid']}")
                 hdir = Chef::Resource::Directory.new('SSH_DIR_Creation', run_context)
                 hdir.path = "#{home_dir}/.ssh"
                 hdir.owner user['uid']

@@ -25,17 +25,17 @@ It Expects node[:ssh_auth_keys] to be a hash containing user name as key and dat
 
 
 You can define hash in wrapper cookbook's default attributes as follows
-```
+
 default['ssh_auth_keys']['user_name'] = ["databag1", "databag2",.....]
-```
+
 Additional attributes can be tweaked see attributes/default.rb for Additional self explanatory attributes
 
-.....wrapper_cookbook/attributes/default.rb
-```
+.....weapper_cookbook/attributes/default.rb
+
 default['ssh_auth_keys']['root'] = ["user1", "user2", "bipin"]
 
 default["ssh_auth_keys"]['bips'] = ["bipin"]
-```
+
 
 ### Platforms
 
@@ -54,12 +54,12 @@ default["ssh_auth_keys"]['bips'] = ["bipin"]
 ## Usage
 
 You can define hash in wrapper cookbook's default attributes as follows
-```
-default['ssh_auth_keys']['user_name'] = ["databag1", "databag2",.....]
-```
 
-.....wrapper_cookbook/attributes/default.rb
-```
+default['ssh_auth_keys']['user_name'] = ["databag1", "databag2",.....]
+
+
+.....weapper_cookbook/attributes/default.rb
+
 default['ssh_auth_keys']['root'] = ["user1", "user2", "bipin"]
 
 default["ssh_auth_keys"]['bips'] = ["bipin"]
@@ -67,12 +67,12 @@ default["ssh_auth_keys"]['bips'] = ["bipin"]
 And just include `ssh_auth_keys` in your wrapper recipe:
 
 include_recipe "ssh_auth_keys"
-```
+
 
 Node Configuration and run_list can be defined in json format:
 
 Node configuration example to create authorized_keys for user root from data bag user1 user2 and bipin:
-```
+
 {    
   "ssh_auth_keys": {     
     "root": ["user1", "user2", "bipin"]    
@@ -81,8 +81,7 @@ Node configuration example to create authorized_keys for user root from data bag
     "recipe[ssh_auth_keys]"
   ]
 }
-```
-```
+
 {   
   "ssh_auth_keys": {    
     "root": "user1"   
@@ -91,28 +90,6 @@ Node configuration example to create authorized_keys for user root from data bag
     "recipe[ssh_auth_keys]"  
   ]   
 }
-```
-Use knife to create a data bag named "users"
-
-` knife data bag create users`
-
-```
-knife data bag users user1
-{  
-  "id": "user1",  
-  "ssh_keys": "ssh-rsa BAASSS3Nz...YYYhCw== user1"  
-}
-```
-SSH options can be given with "ssh_options". They will prepend every given ssh-key.
-
-```
-knife data bag users bipin
-{
-  "id": "bipin",
-  "ssh_keys": "ssh-rsa AAAAB3Nz...5D8F== bipin",
-  "ssh_options": "environment=\"REMOTE_USER=Foo Bar\""
-}
-```
 
 ## Contributing
 
@@ -125,6 +102,4 @@ knife data bag users bipin
 
 ## License and Authors
 
-TODO:
-- Work on FC014: Consider extracting long ruby_block to library
-- convert recipe to a Resource
+Authors: TODO: List authors
