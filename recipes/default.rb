@@ -23,11 +23,6 @@ ruby_block 'ssh_auth_keys_copying' do
          user = node['etc']['passwd'][target_user]
        end
 
-        # Get user data from ohai database
-       # user = node['etc']['passwd'][target_user]
-
-        # If user does not exist below will be default values
-
         user = { 'uid' => target_user, gid => target_user, 'dir' => "/home/#{target_user}" } unless user
 
         if user && user['dir'] && user['dir'] != '/dev/null'
@@ -128,6 +123,7 @@ ruby_block 'ssh_auth_keys_copying' do
             templ.owner user['uid']
             templ.group user['gid'] || user['uid']
             templ.mode '0600'
+            templ.sensitive true
             templ.variables ssh_auth_keys: ssh_keys
             templ.run_action :create
           end

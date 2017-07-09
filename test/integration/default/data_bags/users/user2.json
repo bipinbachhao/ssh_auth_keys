@@ -1,0 +1,5 @@
+{
+  "id": "user2",
+  "ssh_keys": "ssh-rsa AAAAB3Nz...5D8F== user2",
+  "ssh_options": "environment=\"REMOTE_USER=Foo Bar\""
+}
