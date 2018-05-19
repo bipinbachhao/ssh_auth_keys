@@ -30,7 +30,7 @@ default['ssh_auth_keys']['user_name'] = ["databag1", "databag2",.....]
 
 Additional attributes can be tweaked see attributes/default.rb for Additional self explanatory attributes
 
-.....weapper_cookbook/attributes/default.rb
+.....wrapper_cookbook/attributes/default.rb
 
 default['ssh_auth_keys']['root'] = ["user1", "user2", "bipin"]
 
