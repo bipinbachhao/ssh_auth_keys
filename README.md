@@ -2,7 +2,7 @@
 
 ## Description
 This recipe reads public ssh authorized keys from data bag and appends those in $HOME/.ssh/authorized_keys file
-It supports encrypted data baf supported
+It supports encrypted data bag
 
 ## Requirements
 
@@ -39,9 +39,9 @@ default["ssh_auth_keys"]['bips'] = ["bipin"]
 
 ### Platforms
 
-- Centos-6.8
-- Centos-7.1
-- Centos-7.2
+- Centos-6.9
+- Centos-7.3
+- Centos-7.4
 
 ### Chef
 
@@ -58,7 +58,7 @@ You can define hash in wrapper cookbook's default attributes as follows
 default['ssh_auth_keys']['user_name'] = ["databag1", "databag2",.....]
 
 
-.....weapper_cookbook/attributes/default.rb
+.....wrapper_cookbook/attributes/default.rb
 
 default['ssh_auth_keys']['root'] = ["user1", "user2", "bipin"]
 

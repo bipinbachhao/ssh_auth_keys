@@ -14,13 +14,16 @@ verifier:
 
 platforms:
   - name: centos-6.9
-  - name: centos-7.3
+  - name: centos-7.4
 
 suites:
   - name: default
+    data_bags_path: 'test/integration/data_bags'
     run_list:
       - recipe[ssh_auth_keys::default]
     verifier:
       inspec_tests:
         - test/smoke/default
     attributes:
+      ssh_auth_keys:
+        root: ['bipin', 'user1']
